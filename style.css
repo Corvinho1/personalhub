@@ -12,6 +12,7 @@ body {
 
 .container {
     display: flex;
+    flex-wrap: wrap;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
     width: 90%;
@@ -19,8 +20,17 @@ body {
     background-color: #2e2e2e;
 }
 
+.image-container, .links-container {
+    flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+    .image-container, .links-container {
+        flex: 1;
+    }
+}
+
 .image-container {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +43,6 @@ body {
 }
 
 .links-container {
-    flex: 1;
     padding: 20px;
     overflow-y: auto;
 }
