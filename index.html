@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Startpage</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Script para focar automaticamente na barra de pesquisa ao carregar a página
+        window.onload = function() {
+            document.getElementById('search-bar').focus();
+        };
+    </script>
 </head>
 <body>
     <div class="container">
@@ -58,7 +64,7 @@
             </div>
             <div class="find-container">
                 <form action="https://www.google.com/search" method="GET">
-                    <input type="text" name="q" placeholder="Type here...">
+                    <input id="search-bar" type="text" name="q" placeholder="Type here...">
                     <button type="submit">Search</button>
                 </form>
             </div>
