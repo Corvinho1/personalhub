@@ -10,6 +10,20 @@
         window.onload = function() {
             document.getElementById('search-bar').focus();
         };
+
+        // Script para redirecionar diretamente para o link se for um URL completo ou um domínio comum
+        function handleSearch(event) {
+            event.preventDefault();
+            const query = document.getElementById('search-bar').value;
+            const urlPattern = /^(https?:\/\/)?([a-z0-9]+[.])*[a-z0-9-]+(\.[a-z]{2,})(:[0-9]{1,5})?(\/.*)?$/i;
+
+            if (urlPattern.test(query)) {
+                const url = query.startsWith('http') ? query : 'https://' + query;
+                window.location.href = url;
+            } else {
+                document.getElementById('search-form').submit();
+            }
+        }
     </script>
 </head>
 <body>
@@ -63,7 +77,7 @@
                 </ul>
             </div>
             <div class="find-container">
-                <form action="https://www.google.com/search" method="GET">
+                <form id="search-form" action="https://www.google.com/search" method="GET" onsubmit="handleSearch(event)">
                     <input id="search-bar" type="text" name="q" placeholder="Type here...">
                     <button type="submit">Search</button>
                 </form>
